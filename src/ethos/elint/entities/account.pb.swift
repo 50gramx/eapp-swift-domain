@@ -55,32 +55,6 @@ struct Elint_Entity_Account {
   fileprivate var _createdAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 }
 
-/// AccountVerificationCode represents the accountability of delivery of Verification Code
-struct Elint_Entity_AccountVerificationCodeDetails {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  /// Was the code sent to the account?
-  var accountVerificationCodeSent: Bool = false
-
-  /// When was the last time code sent?
-  var sentAt: SwiftProtobuf.Google_Protobuf_Timestamp {
-    get {return _sentAt ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
-    set {_sentAt = newValue}
-  }
-  /// Returns true if `sentAt` has been explicitly set.
-  var hasSentAt: Bool {return self._sentAt != nil}
-  /// Clears the value of `sentAt`. Subsequent reads from it will return its default value.
-  mutating func clearSentAt() {self._sentAt = nil}
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  init() {}
-
-  fileprivate var _sentAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
-}
-
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "elint.entity"
@@ -154,44 +128,6 @@ extension Elint_Entity_Account: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     if lhs.active != rhs.active {return false}
     if lhs.adminAcc != rhs.adminAcc {return false}
     if lhs._createdAt != rhs._createdAt {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension Elint_Entity_AccountVerificationCodeDetails: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".AccountVerificationCodeDetails"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "account_verification_code_sent"),
-    2: .standard(proto: "sent_at"),
-  ]
-
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularBoolField(value: &self.accountVerificationCodeSent) }()
-      case 2: try { try decoder.decodeSingularMessageField(value: &self._sentAt) }()
-      default: break
-      }
-    }
-  }
-
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if self.accountVerificationCodeSent != false {
-      try visitor.visitSingularBoolField(value: self.accountVerificationCodeSent, fieldNumber: 1)
-    }
-    if let v = self._sentAt {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  static func ==(lhs: Elint_Entity_AccountVerificationCodeDetails, rhs: Elint_Entity_AccountVerificationCodeDetails) -> Bool {
-    if lhs.accountVerificationCodeSent != rhs.accountVerificationCodeSent {return false}
-    if lhs._sentAt != rhs._sentAt {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

@@ -59,7 +59,7 @@ struct Elint_Entity_ReserveOrganizationRequest {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  /// organization space reservation
+  /// organisation space reservation
   var organizationSpace: String = String()
 
   /// request created at
@@ -86,7 +86,7 @@ struct Elint_Entity_ReserveOrganizationResponse {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  /// organization space reservation
+  /// organisation space reservation
   var organizationSpace: String = String()
 
   /// was the space reservation successful?
@@ -98,22 +98,11 @@ struct Elint_Entity_ReserveOrganizationResponse {
   /// admin account verification pending
   var accountEmailIDVerified: Bool = false
 
-  var accountVerificationCode: Elint_Entity_AccountVerificationCodeDetails {
-    get {return _accountVerificationCode ?? Elint_Entity_AccountVerificationCodeDetails()}
-    set {_accountVerificationCode = newValue}
-  }
-  /// Returns true if `accountVerificationCode` has been explicitly set.
-  var hasAccountVerificationCode: Bool {return self._accountVerificationCode != nil}
-  /// Clears the value of `accountVerificationCode`. Subsequent reads from it will return its default value.
-  mutating func clearAccountVerificationCode() {self._accountVerificationCode = nil}
-
   var message: String = String()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
-
-  fileprivate var _accountVerificationCode: Elint_Entity_AccountVerificationCodeDetails? = nil
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -233,8 +222,7 @@ extension Elint_Entity_ReserveOrganizationResponse: SwiftProtobuf.Message, Swift
     2: .standard(proto: "organization_space_reserved"),
     3: .standard(proto: "account_email_id"),
     4: .standard(proto: "account_email_id_verified"),
-    5: .standard(proto: "account_verification_code"),
-    6: .same(proto: "message"),
+    5: .same(proto: "message"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -247,8 +235,7 @@ extension Elint_Entity_ReserveOrganizationResponse: SwiftProtobuf.Message, Swift
       case 2: try { try decoder.decodeSingularBoolField(value: &self.organizationSpaceReserved) }()
       case 3: try { try decoder.decodeSingularStringField(value: &self.accountEmailID) }()
       case 4: try { try decoder.decodeSingularBoolField(value: &self.accountEmailIDVerified) }()
-      case 5: try { try decoder.decodeSingularMessageField(value: &self._accountVerificationCode) }()
-      case 6: try { try decoder.decodeSingularStringField(value: &self.message) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self.message) }()
       default: break
       }
     }
@@ -267,11 +254,8 @@ extension Elint_Entity_ReserveOrganizationResponse: SwiftProtobuf.Message, Swift
     if self.accountEmailIDVerified != false {
       try visitor.visitSingularBoolField(value: self.accountEmailIDVerified, fieldNumber: 4)
     }
-    if let v = self._accountVerificationCode {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
-    }
     if !self.message.isEmpty {
-      try visitor.visitSingularStringField(value: self.message, fieldNumber: 6)
+      try visitor.visitSingularStringField(value: self.message, fieldNumber: 5)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -281,7 +265,6 @@ extension Elint_Entity_ReserveOrganizationResponse: SwiftProtobuf.Message, Swift
     if lhs.organizationSpaceReserved != rhs.organizationSpaceReserved {return false}
     if lhs.accountEmailID != rhs.accountEmailID {return false}
     if lhs.accountEmailIDVerified != rhs.accountEmailIDVerified {return false}
-    if lhs._accountVerificationCode != rhs._accountVerificationCode {return false}
     if lhs.message != rhs.message {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

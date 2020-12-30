@@ -83,7 +83,7 @@ struct Elint_Entity_ClaimOrganizationSpaceResponse {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  /// Is the organization space available?
+  /// Is the organisation space available?
   var organizationSpaceAvailable: Bool = false
 
   /// A short feedback message about the claim
