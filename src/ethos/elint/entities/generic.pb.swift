@@ -27,6 +27,8 @@ struct Elint_Entity_PersistentSessionTokenDetails {
 
   var sessionToken: String = String()
 
+  var sessionScope: String = String()
+
   var generatedAt: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _generatedAt ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_generatedAt = newValue}
@@ -69,6 +71,8 @@ struct Elint_Entity_TemporarySessionTokenDetails {
   // methods supported on all messages.
 
   var sessionToken: String = String()
+
+  var sessionScope: String = String()
 
   var generatedAt: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _generatedAt ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
@@ -180,9 +184,10 @@ extension Elint_Entity_PersistentSessionTokenDetails: SwiftProtobuf.Message, Swi
   static let protoMessageName: String = _protobuf_package + ".PersistentSessionTokenDetails"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "session_token"),
-    2: .standard(proto: "generated_at"),
-    3: .standard(proto: "last_used_at"),
-    4: .standard(proto: "valid_till"),
+    2: .standard(proto: "session_scope"),
+    3: .standard(proto: "generated_at"),
+    4: .standard(proto: "last_used_at"),
+    5: .standard(proto: "valid_till"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -192,9 +197,10 @@ extension Elint_Entity_PersistentSessionTokenDetails: SwiftProtobuf.Message, Swi
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularStringField(value: &self.sessionToken) }()
-      case 2: try { try decoder.decodeSingularMessageField(value: &self._generatedAt) }()
-      case 3: try { try decoder.decodeSingularMessageField(value: &self._lastUsedAt) }()
-      case 4: try { try decoder.decodeSingularMessageField(value: &self._validTill) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.sessionScope) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._generatedAt) }()
+      case 4: try { try decoder.decodeSingularMessageField(value: &self._lastUsedAt) }()
+      case 5: try { try decoder.decodeSingularMessageField(value: &self._validTill) }()
       default: break
       }
     }
@@ -204,20 +210,24 @@ extension Elint_Entity_PersistentSessionTokenDetails: SwiftProtobuf.Message, Swi
     if !self.sessionToken.isEmpty {
       try visitor.visitSingularStringField(value: self.sessionToken, fieldNumber: 1)
     }
-    if let v = self._generatedAt {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    if !self.sessionScope.isEmpty {
+      try visitor.visitSingularStringField(value: self.sessionScope, fieldNumber: 2)
     }
-    if let v = self._lastUsedAt {
+    if let v = self._generatedAt {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
     }
-    if let v = self._validTill {
+    if let v = self._lastUsedAt {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+    }
+    if let v = self._validTill {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: Elint_Entity_PersistentSessionTokenDetails, rhs: Elint_Entity_PersistentSessionTokenDetails) -> Bool {
     if lhs.sessionToken != rhs.sessionToken {return false}
+    if lhs.sessionScope != rhs.sessionScope {return false}
     if lhs._generatedAt != rhs._generatedAt {return false}
     if lhs._lastUsedAt != rhs._lastUsedAt {return false}
     if lhs._validTill != rhs._validTill {return false}
@@ -230,8 +240,9 @@ extension Elint_Entity_TemporarySessionTokenDetails: SwiftProtobuf.Message, Swif
   static let protoMessageName: String = _protobuf_package + ".TemporarySessionTokenDetails"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "session_token"),
-    2: .standard(proto: "generated_at"),
-    3: .standard(proto: "valid_till"),
+    2: .standard(proto: "session_scope"),
+    3: .standard(proto: "generated_at"),
+    4: .standard(proto: "valid_till"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -241,8 +252,9 @@ extension Elint_Entity_TemporarySessionTokenDetails: SwiftProtobuf.Message, Swif
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularStringField(value: &self.sessionToken) }()
-      case 2: try { try decoder.decodeSingularMessageField(value: &self._generatedAt) }()
-      case 3: try { try decoder.decodeSingularMessageField(value: &self._validTill) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.sessionScope) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._generatedAt) }()
+      case 4: try { try decoder.decodeSingularMessageField(value: &self._validTill) }()
       default: break
       }
     }
@@ -252,17 +264,21 @@ extension Elint_Entity_TemporarySessionTokenDetails: SwiftProtobuf.Message, Swif
     if !self.sessionToken.isEmpty {
       try visitor.visitSingularStringField(value: self.sessionToken, fieldNumber: 1)
     }
+    if !self.sessionScope.isEmpty {
+      try visitor.visitSingularStringField(value: self.sessionScope, fieldNumber: 2)
+    }
     if let v = self._generatedAt {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
     }
     if let v = self._validTill {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: Elint_Entity_TemporarySessionTokenDetails, rhs: Elint_Entity_TemporarySessionTokenDetails) -> Bool {
     if lhs.sessionToken != rhs.sessionToken {return false}
+    if lhs.sessionScope != rhs.sessionScope {return false}
     if lhs._generatedAt != rhs._generatedAt {return false}
     if lhs._validTill != rhs._validTill {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}

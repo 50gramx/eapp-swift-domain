@@ -20,24 +20,81 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
+enum Elint_Entity_AccountGender: SwiftProtobuf.Enum {
+  typealias RawValue = Int
+  case unknown // = 0
+  case female // = 1
+  case male // = 2
+  case UNRECOGNIZED(Int)
+
+  init() {
+    self = .unknown
+  }
+
+  init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .unknown
+    case 1: self = .female
+    case 2: self = .male
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  var rawValue: Int {
+    switch self {
+    case .unknown: return 0
+    case .female: return 1
+    case .male: return 2
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+}
+
+#if swift(>=4.2)
+
+extension Elint_Entity_AccountGender: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  static var allCases: [Elint_Entity_AccountGender] = [
+    .unknown,
+    .female,
+    .male,
+  ]
+}
+
+#endif  // swift(>=4.2)
+
 struct Elint_Entity_Account {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  var accountAnalyticsID: String = String()
+
   var accountID: String = String()
 
-  var accountEmailID: String = String()
+  var accountPersonalEmailID: String = String()
 
-  var firstName: String = String()
+  var accountWorkEmailID: String = String()
 
-  var lastName: String = String()
+  var accountCountryCode: String = String()
 
-  var organizationID: String = String()
+  var accountMobileNumber: String = String()
 
-  var active: Bool = false
+  var accountFirstName: String = String()
 
-  var adminAcc: Bool = false
+  var accountLastName: String = String()
+
+  var accountBirthAt: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _accountBirthAt ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_accountBirthAt = newValue}
+  }
+  /// Returns true if `accountBirthAt` has been explicitly set.
+  var hasAccountBirthAt: Bool {return self._accountBirthAt != nil}
+  /// Clears the value of `accountBirthAt`. Subsequent reads from it will return its default value.
+  mutating func clearAccountBirthAt() {self._accountBirthAt = nil}
+
+  var accountGender: Elint_Entity_AccountGender = .unknown
 
   var createdAt: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _createdAt ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
@@ -52,24 +109,208 @@ struct Elint_Entity_Account {
 
   init() {}
 
+  fileprivate var _accountBirthAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
   fileprivate var _createdAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+}
+
+struct Elint_Entity_AccountSpaceKnowledgeAccessMeta {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var accountID: String = String()
+
+  var knowledgeSpaceAccessSessionToken: String = String()
+
+  var spaceKnowledgeID: String = String()
+
+  var accessAt: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _accessAt ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_accessAt = newValue}
+  }
+  /// Returns true if `accessAt` has been explicitly set.
+  var hasAccessAt: Bool {return self._accessAt != nil}
+  /// Clears the value of `accessAt`. Subsequent reads from it will return its default value.
+  mutating func clearAccessAt() {self._accessAt = nil}
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _accessAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+}
+
+struct Elint_Entity_AccountSpaceKnowledgeDomainAccessMeta {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var accountID: String = String()
+
+  var knowledgeSpaceAccessSessionToken: String = String()
+
+  var spaceKnowledgeID: String = String()
+
+  var spaceKnowledgeDomainID: String = String()
+
+  var accessAt: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _accessAt ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_accessAt = newValue}
+  }
+  /// Returns true if `accessAt` has been explicitly set.
+  var hasAccessAt: Bool {return self._accessAt != nil}
+  /// Clears the value of `accessAt`. Subsequent reads from it will return its default value.
+  mutating func clearAccessAt() {self._accessAt = nil}
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _accessAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+}
+
+struct Elint_Entity_AccountSpaceKnowledgeDomainFileAccessMeta {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var accountID: String = String()
+
+  var knowledgeSpaceAccessSessionToken: String = String()
+
+  var spaceKnowledgeID: String = String()
+
+  var spaceKnowledgeDomainID: String = String()
+
+  var spaceKnowledgeDomainFileID: String = String()
+
+  var accessAt: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _accessAt ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_accessAt = newValue}
+  }
+  /// Returns true if `accessAt` has been explicitly set.
+  var hasAccessAt: Bool {return self._accessAt != nil}
+  /// Clears the value of `accessAt`. Subsequent reads from it will return its default value.
+  mutating func clearAccessAt() {self._accessAt = nil}
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _accessAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "elint.entity"
 
+extension Elint_Entity_AccountGender: SwiftProtobuf._ProtoNameProviding {
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "UNKNOWN"),
+    1: .same(proto: "FEMALE"),
+    2: .same(proto: "MALE"),
+  ]
+}
+
 extension Elint_Entity_Account: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".Account"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "account_analytics_id"),
+    2: .standard(proto: "account_id"),
+    3: .standard(proto: "account_personal_email_id"),
+    4: .standard(proto: "account_work_email_id"),
+    5: .standard(proto: "account_country_code"),
+    6: .standard(proto: "account_mobile_number"),
+    7: .standard(proto: "account_first_name"),
+    8: .standard(proto: "account_last_name"),
+    9: .standard(proto: "account_birth_at"),
+    10: .standard(proto: "account_gender"),
+    11: .standard(proto: "created_at"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.accountAnalyticsID) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.accountID) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.accountPersonalEmailID) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.accountWorkEmailID) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self.accountCountryCode) }()
+      case 6: try { try decoder.decodeSingularStringField(value: &self.accountMobileNumber) }()
+      case 7: try { try decoder.decodeSingularStringField(value: &self.accountFirstName) }()
+      case 8: try { try decoder.decodeSingularStringField(value: &self.accountLastName) }()
+      case 9: try { try decoder.decodeSingularMessageField(value: &self._accountBirthAt) }()
+      case 10: try { try decoder.decodeSingularEnumField(value: &self.accountGender) }()
+      case 11: try { try decoder.decodeSingularMessageField(value: &self._createdAt) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.accountAnalyticsID.isEmpty {
+      try visitor.visitSingularStringField(value: self.accountAnalyticsID, fieldNumber: 1)
+    }
+    if !self.accountID.isEmpty {
+      try visitor.visitSingularStringField(value: self.accountID, fieldNumber: 2)
+    }
+    if !self.accountPersonalEmailID.isEmpty {
+      try visitor.visitSingularStringField(value: self.accountPersonalEmailID, fieldNumber: 3)
+    }
+    if !self.accountWorkEmailID.isEmpty {
+      try visitor.visitSingularStringField(value: self.accountWorkEmailID, fieldNumber: 4)
+    }
+    if !self.accountCountryCode.isEmpty {
+      try visitor.visitSingularStringField(value: self.accountCountryCode, fieldNumber: 5)
+    }
+    if !self.accountMobileNumber.isEmpty {
+      try visitor.visitSingularStringField(value: self.accountMobileNumber, fieldNumber: 6)
+    }
+    if !self.accountFirstName.isEmpty {
+      try visitor.visitSingularStringField(value: self.accountFirstName, fieldNumber: 7)
+    }
+    if !self.accountLastName.isEmpty {
+      try visitor.visitSingularStringField(value: self.accountLastName, fieldNumber: 8)
+    }
+    if let v = self._accountBirthAt {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
+    }
+    if self.accountGender != .unknown {
+      try visitor.visitSingularEnumField(value: self.accountGender, fieldNumber: 10)
+    }
+    if let v = self._createdAt {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 11)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Elint_Entity_Account, rhs: Elint_Entity_Account) -> Bool {
+    if lhs.accountAnalyticsID != rhs.accountAnalyticsID {return false}
+    if lhs.accountID != rhs.accountID {return false}
+    if lhs.accountPersonalEmailID != rhs.accountPersonalEmailID {return false}
+    if lhs.accountWorkEmailID != rhs.accountWorkEmailID {return false}
+    if lhs.accountCountryCode != rhs.accountCountryCode {return false}
+    if lhs.accountMobileNumber != rhs.accountMobileNumber {return false}
+    if lhs.accountFirstName != rhs.accountFirstName {return false}
+    if lhs.accountLastName != rhs.accountLastName {return false}
+    if lhs._accountBirthAt != rhs._accountBirthAt {return false}
+    if lhs.accountGender != rhs.accountGender {return false}
+    if lhs._createdAt != rhs._createdAt {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Elint_Entity_AccountSpaceKnowledgeAccessMeta: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".AccountSpaceKnowledgeAccessMeta"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "account_id"),
-    2: .standard(proto: "account_email_id"),
-    3: .standard(proto: "first_name"),
-    4: .standard(proto: "last_name"),
-    5: .standard(proto: "organization_id"),
-    6: .same(proto: "active"),
-    7: .standard(proto: "admin_acc"),
-    8: .standard(proto: "created_at"),
+    2: .standard(proto: "knowledge_space_access_session_token"),
+    3: .standard(proto: "space_knowledge_id"),
+    4: .standard(proto: "access_at"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -79,13 +320,9 @@ extension Elint_Entity_Account: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularStringField(value: &self.accountID) }()
-      case 2: try { try decoder.decodeSingularStringField(value: &self.accountEmailID) }()
-      case 3: try { try decoder.decodeSingularStringField(value: &self.firstName) }()
-      case 4: try { try decoder.decodeSingularStringField(value: &self.lastName) }()
-      case 5: try { try decoder.decodeSingularStringField(value: &self.organizationID) }()
-      case 6: try { try decoder.decodeSingularBoolField(value: &self.active) }()
-      case 7: try { try decoder.decodeSingularBoolField(value: &self.adminAcc) }()
-      case 8: try { try decoder.decodeSingularMessageField(value: &self._createdAt) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.knowledgeSpaceAccessSessionToken) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.spaceKnowledgeID) }()
+      case 4: try { try decoder.decodeSingularMessageField(value: &self._accessAt) }()
       default: break
       }
     }
@@ -95,39 +332,141 @@ extension Elint_Entity_Account: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     if !self.accountID.isEmpty {
       try visitor.visitSingularStringField(value: self.accountID, fieldNumber: 1)
     }
-    if !self.accountEmailID.isEmpty {
-      try visitor.visitSingularStringField(value: self.accountEmailID, fieldNumber: 2)
+    if !self.knowledgeSpaceAccessSessionToken.isEmpty {
+      try visitor.visitSingularStringField(value: self.knowledgeSpaceAccessSessionToken, fieldNumber: 2)
     }
-    if !self.firstName.isEmpty {
-      try visitor.visitSingularStringField(value: self.firstName, fieldNumber: 3)
+    if !self.spaceKnowledgeID.isEmpty {
+      try visitor.visitSingularStringField(value: self.spaceKnowledgeID, fieldNumber: 3)
     }
-    if !self.lastName.isEmpty {
-      try visitor.visitSingularStringField(value: self.lastName, fieldNumber: 4)
-    }
-    if !self.organizationID.isEmpty {
-      try visitor.visitSingularStringField(value: self.organizationID, fieldNumber: 5)
-    }
-    if self.active != false {
-      try visitor.visitSingularBoolField(value: self.active, fieldNumber: 6)
-    }
-    if self.adminAcc != false {
-      try visitor.visitSingularBoolField(value: self.adminAcc, fieldNumber: 7)
-    }
-    if let v = self._createdAt {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
+    if let v = self._accessAt {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Elint_Entity_Account, rhs: Elint_Entity_Account) -> Bool {
+  static func ==(lhs: Elint_Entity_AccountSpaceKnowledgeAccessMeta, rhs: Elint_Entity_AccountSpaceKnowledgeAccessMeta) -> Bool {
     if lhs.accountID != rhs.accountID {return false}
-    if lhs.accountEmailID != rhs.accountEmailID {return false}
-    if lhs.firstName != rhs.firstName {return false}
-    if lhs.lastName != rhs.lastName {return false}
-    if lhs.organizationID != rhs.organizationID {return false}
-    if lhs.active != rhs.active {return false}
-    if lhs.adminAcc != rhs.adminAcc {return false}
-    if lhs._createdAt != rhs._createdAt {return false}
+    if lhs.knowledgeSpaceAccessSessionToken != rhs.knowledgeSpaceAccessSessionToken {return false}
+    if lhs.spaceKnowledgeID != rhs.spaceKnowledgeID {return false}
+    if lhs._accessAt != rhs._accessAt {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Elint_Entity_AccountSpaceKnowledgeDomainAccessMeta: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".AccountSpaceKnowledgeDomainAccessMeta"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "account_id"),
+    2: .standard(proto: "knowledge_space_access_session_token"),
+    3: .standard(proto: "space_knowledge_id"),
+    4: .standard(proto: "space_knowledge_domain_id"),
+    5: .standard(proto: "access_at"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.accountID) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.knowledgeSpaceAccessSessionToken) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.spaceKnowledgeID) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.spaceKnowledgeDomainID) }()
+      case 5: try { try decoder.decodeSingularMessageField(value: &self._accessAt) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.accountID.isEmpty {
+      try visitor.visitSingularStringField(value: self.accountID, fieldNumber: 1)
+    }
+    if !self.knowledgeSpaceAccessSessionToken.isEmpty {
+      try visitor.visitSingularStringField(value: self.knowledgeSpaceAccessSessionToken, fieldNumber: 2)
+    }
+    if !self.spaceKnowledgeID.isEmpty {
+      try visitor.visitSingularStringField(value: self.spaceKnowledgeID, fieldNumber: 3)
+    }
+    if !self.spaceKnowledgeDomainID.isEmpty {
+      try visitor.visitSingularStringField(value: self.spaceKnowledgeDomainID, fieldNumber: 4)
+    }
+    if let v = self._accessAt {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Elint_Entity_AccountSpaceKnowledgeDomainAccessMeta, rhs: Elint_Entity_AccountSpaceKnowledgeDomainAccessMeta) -> Bool {
+    if lhs.accountID != rhs.accountID {return false}
+    if lhs.knowledgeSpaceAccessSessionToken != rhs.knowledgeSpaceAccessSessionToken {return false}
+    if lhs.spaceKnowledgeID != rhs.spaceKnowledgeID {return false}
+    if lhs.spaceKnowledgeDomainID != rhs.spaceKnowledgeDomainID {return false}
+    if lhs._accessAt != rhs._accessAt {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Elint_Entity_AccountSpaceKnowledgeDomainFileAccessMeta: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".AccountSpaceKnowledgeDomainFileAccessMeta"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "account_id"),
+    2: .standard(proto: "knowledge_space_access_session_token"),
+    3: .standard(proto: "space_knowledge_id"),
+    4: .standard(proto: "space_knowledge_domain_id"),
+    5: .standard(proto: "space_knowledge_domain_file_id"),
+    6: .standard(proto: "access_at"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.accountID) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.knowledgeSpaceAccessSessionToken) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.spaceKnowledgeID) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.spaceKnowledgeDomainID) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self.spaceKnowledgeDomainFileID) }()
+      case 6: try { try decoder.decodeSingularMessageField(value: &self._accessAt) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.accountID.isEmpty {
+      try visitor.visitSingularStringField(value: self.accountID, fieldNumber: 1)
+    }
+    if !self.knowledgeSpaceAccessSessionToken.isEmpty {
+      try visitor.visitSingularStringField(value: self.knowledgeSpaceAccessSessionToken, fieldNumber: 2)
+    }
+    if !self.spaceKnowledgeID.isEmpty {
+      try visitor.visitSingularStringField(value: self.spaceKnowledgeID, fieldNumber: 3)
+    }
+    if !self.spaceKnowledgeDomainID.isEmpty {
+      try visitor.visitSingularStringField(value: self.spaceKnowledgeDomainID, fieldNumber: 4)
+    }
+    if !self.spaceKnowledgeDomainFileID.isEmpty {
+      try visitor.visitSingularStringField(value: self.spaceKnowledgeDomainFileID, fieldNumber: 5)
+    }
+    if let v = self._accessAt {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Elint_Entity_AccountSpaceKnowledgeDomainFileAccessMeta, rhs: Elint_Entity_AccountSpaceKnowledgeDomainFileAccessMeta) -> Bool {
+    if lhs.accountID != rhs.accountID {return false}
+    if lhs.knowledgeSpaceAccessSessionToken != rhs.knowledgeSpaceAccessSessionToken {return false}
+    if lhs.spaceKnowledgeID != rhs.spaceKnowledgeID {return false}
+    if lhs.spaceKnowledgeDomainID != rhs.spaceKnowledgeDomainID {return false}
+    if lhs.spaceKnowledgeDomainFileID != rhs.spaceKnowledgeDomainFileID {return false}
+    if lhs._accessAt != rhs._accessAt {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

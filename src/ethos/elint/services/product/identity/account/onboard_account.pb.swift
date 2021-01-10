@@ -365,45 +365,52 @@ struct Elint_Services_Product_Identity_VerifyOnboardingAccountResponse {
   // methods supported on all messages.
 
   var accountDetails: Elint_Services_Product_Identity_AccountDetails {
-    get {return _accountDetails ?? Elint_Services_Product_Identity_AccountDetails()}
-    set {_accountDetails = newValue}
+    get {return _storage._accountDetails ?? Elint_Services_Product_Identity_AccountDetails()}
+    set {_uniqueStorage()._accountDetails = newValue}
   }
   /// Returns true if `accountDetails` has been explicitly set.
-  var hasAccountDetails: Bool {return self._accountDetails != nil}
+  var hasAccountDetails: Bool {return _storage._accountDetails != nil}
   /// Clears the value of `accountDetails`. Subsequent reads from it will return its default value.
-  mutating func clearAccountDetails() {self._accountDetails = nil}
+  mutating func clearAccountDetails() {_uniqueStorage()._accountDetails = nil}
 
-  var accountVerified: Bool = false
+  var accountVerified: Bool {
+    get {return _storage._accountVerified}
+    set {_uniqueStorage()._accountVerified = newValue}
+  }
 
-  var verificationMessage: String = String()
+  var verificationMessage: String {
+    get {return _storage._verificationMessage}
+    set {_uniqueStorage()._verificationMessage = newValue}
+  }
 
   var onboardSessionTokenDetails: Elint_Entity_PersistentSessionTokenDetails {
-    get {return _onboardSessionTokenDetails ?? Elint_Entity_PersistentSessionTokenDetails()}
-    set {_onboardSessionTokenDetails = newValue}
+    get {return _storage._onboardSessionTokenDetails ?? Elint_Entity_PersistentSessionTokenDetails()}
+    set {_uniqueStorage()._onboardSessionTokenDetails = newValue}
   }
   /// Returns true if `onboardSessionTokenDetails` has been explicitly set.
-  var hasOnboardSessionTokenDetails: Bool {return self._onboardSessionTokenDetails != nil}
+  var hasOnboardSessionTokenDetails: Bool {return _storage._onboardSessionTokenDetails != nil}
   /// Clears the value of `onboardSessionTokenDetails`. Subsequent reads from it will return its default value.
-  mutating func clearOnboardSessionTokenDetails() {self._onboardSessionTokenDetails = nil}
+  mutating func clearOnboardSessionTokenDetails() {_uniqueStorage()._onboardSessionTokenDetails = nil}
 
-  var onboardOrganizationName: String = String()
+  var onboardOrganizationName: String {
+    get {return _storage._onboardOrganizationName}
+    set {_uniqueStorage()._onboardOrganizationName = newValue}
+  }
 
   var verifiedAt: SwiftProtobuf.Google_Protobuf_Timestamp {
-    get {return _verifiedAt ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
-    set {_verifiedAt = newValue}
+    get {return _storage._verifiedAt ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_uniqueStorage()._verifiedAt = newValue}
   }
   /// Returns true if `verifiedAt` has been explicitly set.
-  var hasVerifiedAt: Bool {return self._verifiedAt != nil}
+  var hasVerifiedAt: Bool {return _storage._verifiedAt != nil}
   /// Clears the value of `verifiedAt`. Subsequent reads from it will return its default value.
-  mutating func clearVerifiedAt() {self._verifiedAt = nil}
+  mutating func clearVerifiedAt() {_uniqueStorage()._verifiedAt = nil}
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 
-  fileprivate var _accountDetails: Elint_Services_Product_Identity_AccountDetails? = nil
-  fileprivate var _onboardSessionTokenDetails: Elint_Entity_PersistentSessionTokenDetails? = nil
-  fileprivate var _verifiedAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+  fileprivate var _storage = _StorageClass.defaultInstance
 }
 
 struct Elint_Services_Product_Identity_AuthenticateOnboardedAccountRequest {
@@ -490,88 +497,6 @@ struct Elint_Services_Product_Identity_AuthenticateOnboardedAccountResponse {
   fileprivate var _accountDetails: Elint_Services_Product_Identity_AccountDetails? = nil
   fileprivate var _onboardSessionTokenDetails: Elint_Entity_PersistentSessionTokenDetails? = nil
   fileprivate var _authenticatedAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
-}
-
-struct Elint_Services_Product_Identity_AccessAccountEthosIdentityTokenRequest {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  var accountDetails: Elint_Services_Product_Identity_AccountDetails {
-    get {return _accountDetails ?? Elint_Services_Product_Identity_AccountDetails()}
-    set {_accountDetails = newValue}
-  }
-  /// Returns true if `accountDetails` has been explicitly set.
-  var hasAccountDetails: Bool {return self._accountDetails != nil}
-  /// Clears the value of `accountDetails`. Subsequent reads from it will return its default value.
-  mutating func clearAccountDetails() {self._accountDetails = nil}
-
-  var accountConveniencePin: String = String()
-
-  var onboardSessionTokenDetails: Elint_Entity_PersistentSessionTokenDetails {
-    get {return _onboardSessionTokenDetails ?? Elint_Entity_PersistentSessionTokenDetails()}
-    set {_onboardSessionTokenDetails = newValue}
-  }
-  /// Returns true if `onboardSessionTokenDetails` has been explicitly set.
-  var hasOnboardSessionTokenDetails: Bool {return self._onboardSessionTokenDetails != nil}
-  /// Clears the value of `onboardSessionTokenDetails`. Subsequent reads from it will return its default value.
-  mutating func clearOnboardSessionTokenDetails() {self._onboardSessionTokenDetails = nil}
-
-  var requestedAt: SwiftProtobuf.Google_Protobuf_Timestamp {
-    get {return _requestedAt ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
-    set {_requestedAt = newValue}
-  }
-  /// Returns true if `requestedAt` has been explicitly set.
-  var hasRequestedAt: Bool {return self._requestedAt != nil}
-  /// Clears the value of `requestedAt`. Subsequent reads from it will return its default value.
-  mutating func clearRequestedAt() {self._requestedAt = nil}
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  init() {}
-
-  fileprivate var _accountDetails: Elint_Services_Product_Identity_AccountDetails? = nil
-  fileprivate var _onboardSessionTokenDetails: Elint_Entity_PersistentSessionTokenDetails? = nil
-  fileprivate var _requestedAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
-}
-
-struct Elint_Services_Product_Identity_AccessAccountEthosIdentityTokenResponse {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  var accountDetails: Elint_Services_Product_Identity_AccountDetails {
-    get {return _storage._accountDetails ?? Elint_Services_Product_Identity_AccountDetails()}
-    set {_uniqueStorage()._accountDetails = newValue}
-  }
-  /// Returns true if `accountDetails` has been explicitly set.
-  var hasAccountDetails: Bool {return _storage._accountDetails != nil}
-  /// Clears the value of `accountDetails`. Subsequent reads from it will return its default value.
-  mutating func clearAccountDetails() {_uniqueStorage()._accountDetails = nil}
-
-  var onboardSessionTokenDetails: Elint_Entity_PersistentSessionTokenDetails {
-    get {return _storage._onboardSessionTokenDetails ?? Elint_Entity_PersistentSessionTokenDetails()}
-    set {_uniqueStorage()._onboardSessionTokenDetails = newValue}
-  }
-  /// Returns true if `onboardSessionTokenDetails` has been explicitly set.
-  var hasOnboardSessionTokenDetails: Bool {return _storage._onboardSessionTokenDetails != nil}
-  /// Clears the value of `onboardSessionTokenDetails`. Subsequent reads from it will return its default value.
-  mutating func clearOnboardSessionTokenDetails() {_uniqueStorage()._onboardSessionTokenDetails = nil}
-
-  var identityAccessSessionTokenDetails: Elint_Entity_PersistentSessionTokenDetails {
-    get {return _storage._identityAccessSessionTokenDetails ?? Elint_Entity_PersistentSessionTokenDetails()}
-    set {_uniqueStorage()._identityAccessSessionTokenDetails = newValue}
-  }
-  /// Returns true if `identityAccessSessionTokenDetails` has been explicitly set.
-  var hasIdentityAccessSessionTokenDetails: Bool {return _storage._identityAccessSessionTokenDetails != nil}
-  /// Clears the value of `identityAccessSessionTokenDetails`. Subsequent reads from it will return its default value.
-  mutating func clearIdentityAccessSessionTokenDetails() {_uniqueStorage()._identityAccessSessionTokenDetails = nil}
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  init() {}
-
-  fileprivate var _storage = _StorageClass.defaultInstance
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -1060,52 +985,94 @@ extension Elint_Services_Product_Identity_VerifyOnboardingAccountResponse: Swift
     6: .standard(proto: "verified_at"),
   ]
 
+  fileprivate class _StorageClass {
+    var _accountDetails: Elint_Services_Product_Identity_AccountDetails? = nil
+    var _accountVerified: Bool = false
+    var _verificationMessage: String = String()
+    var _onboardSessionTokenDetails: Elint_Entity_PersistentSessionTokenDetails? = nil
+    var _onboardOrganizationName: String = String()
+    var _verifiedAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _accountDetails = source._accountDetails
+      _accountVerified = source._accountVerified
+      _verificationMessage = source._verificationMessage
+      _onboardSessionTokenDetails = source._onboardSessionTokenDetails
+      _onboardOrganizationName = source._onboardOrganizationName
+      _verifiedAt = source._verifiedAt
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularMessageField(value: &self._accountDetails) }()
-      case 2: try { try decoder.decodeSingularBoolField(value: &self.accountVerified) }()
-      case 3: try { try decoder.decodeSingularStringField(value: &self.verificationMessage) }()
-      case 4: try { try decoder.decodeSingularMessageField(value: &self._onboardSessionTokenDetails) }()
-      case 5: try { try decoder.decodeSingularStringField(value: &self.onboardOrganizationName) }()
-      case 6: try { try decoder.decodeSingularMessageField(value: &self._verifiedAt) }()
-      default: break
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeSingularMessageField(value: &_storage._accountDetails) }()
+        case 2: try { try decoder.decodeSingularBoolField(value: &_storage._accountVerified) }()
+        case 3: try { try decoder.decodeSingularStringField(value: &_storage._verificationMessage) }()
+        case 4: try { try decoder.decodeSingularMessageField(value: &_storage._onboardSessionTokenDetails) }()
+        case 5: try { try decoder.decodeSingularStringField(value: &_storage._onboardOrganizationName) }()
+        case 6: try { try decoder.decodeSingularMessageField(value: &_storage._verifiedAt) }()
+        default: break
+        }
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if let v = self._accountDetails {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-    }
-    if self.accountVerified != false {
-      try visitor.visitSingularBoolField(value: self.accountVerified, fieldNumber: 2)
-    }
-    if !self.verificationMessage.isEmpty {
-      try visitor.visitSingularStringField(value: self.verificationMessage, fieldNumber: 3)
-    }
-    if let v = self._onboardSessionTokenDetails {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
-    }
-    if !self.onboardOrganizationName.isEmpty {
-      try visitor.visitSingularStringField(value: self.onboardOrganizationName, fieldNumber: 5)
-    }
-    if let v = self._verifiedAt {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if let v = _storage._accountDetails {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      }
+      if _storage._accountVerified != false {
+        try visitor.visitSingularBoolField(value: _storage._accountVerified, fieldNumber: 2)
+      }
+      if !_storage._verificationMessage.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._verificationMessage, fieldNumber: 3)
+      }
+      if let v = _storage._onboardSessionTokenDetails {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+      }
+      if !_storage._onboardOrganizationName.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._onboardOrganizationName, fieldNumber: 5)
+      }
+      if let v = _storage._verifiedAt {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: Elint_Services_Product_Identity_VerifyOnboardingAccountResponse, rhs: Elint_Services_Product_Identity_VerifyOnboardingAccountResponse) -> Bool {
-    if lhs._accountDetails != rhs._accountDetails {return false}
-    if lhs.accountVerified != rhs.accountVerified {return false}
-    if lhs.verificationMessage != rhs.verificationMessage {return false}
-    if lhs._onboardSessionTokenDetails != rhs._onboardSessionTokenDetails {return false}
-    if lhs.onboardOrganizationName != rhs.onboardOrganizationName {return false}
-    if lhs._verifiedAt != rhs._verifiedAt {return false}
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._accountDetails != rhs_storage._accountDetails {return false}
+        if _storage._accountVerified != rhs_storage._accountVerified {return false}
+        if _storage._verificationMessage != rhs_storage._verificationMessage {return false}
+        if _storage._onboardSessionTokenDetails != rhs_storage._onboardSessionTokenDetails {return false}
+        if _storage._onboardOrganizationName != rhs_storage._onboardOrganizationName {return false}
+        if _storage._verifiedAt != rhs_storage._verifiedAt {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -1206,136 +1173,6 @@ extension Elint_Services_Product_Identity_AuthenticateOnboardedAccountResponse: 
     if lhs.accountAuthenticated != rhs.accountAuthenticated {return false}
     if lhs._onboardSessionTokenDetails != rhs._onboardSessionTokenDetails {return false}
     if lhs._authenticatedAt != rhs._authenticatedAt {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension Elint_Services_Product_Identity_AccessAccountEthosIdentityTokenRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".AccessAccountEthosIdentityTokenRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "account_details"),
-    2: .standard(proto: "account_convenience_pin"),
-    3: .standard(proto: "onboard_session_token_details"),
-    4: .standard(proto: "requested_at"),
-  ]
-
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularMessageField(value: &self._accountDetails) }()
-      case 2: try { try decoder.decodeSingularStringField(value: &self.accountConveniencePin) }()
-      case 3: try { try decoder.decodeSingularMessageField(value: &self._onboardSessionTokenDetails) }()
-      case 4: try { try decoder.decodeSingularMessageField(value: &self._requestedAt) }()
-      default: break
-      }
-    }
-  }
-
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if let v = self._accountDetails {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-    }
-    if !self.accountConveniencePin.isEmpty {
-      try visitor.visitSingularStringField(value: self.accountConveniencePin, fieldNumber: 2)
-    }
-    if let v = self._onboardSessionTokenDetails {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
-    }
-    if let v = self._requestedAt {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  static func ==(lhs: Elint_Services_Product_Identity_AccessAccountEthosIdentityTokenRequest, rhs: Elint_Services_Product_Identity_AccessAccountEthosIdentityTokenRequest) -> Bool {
-    if lhs._accountDetails != rhs._accountDetails {return false}
-    if lhs.accountConveniencePin != rhs.accountConveniencePin {return false}
-    if lhs._onboardSessionTokenDetails != rhs._onboardSessionTokenDetails {return false}
-    if lhs._requestedAt != rhs._requestedAt {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension Elint_Services_Product_Identity_AccessAccountEthosIdentityTokenResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".AccessAccountEthosIdentityTokenResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "account_details"),
-    2: .standard(proto: "onboard_session_token_details"),
-    4: .standard(proto: "identity_access_session_token_details"),
-  ]
-
-  fileprivate class _StorageClass {
-    var _accountDetails: Elint_Services_Product_Identity_AccountDetails? = nil
-    var _onboardSessionTokenDetails: Elint_Entity_PersistentSessionTokenDetails? = nil
-    var _identityAccessSessionTokenDetails: Elint_Entity_PersistentSessionTokenDetails? = nil
-
-    static let defaultInstance = _StorageClass()
-
-    private init() {}
-
-    init(copying source: _StorageClass) {
-      _accountDetails = source._accountDetails
-      _onboardSessionTokenDetails = source._onboardSessionTokenDetails
-      _identityAccessSessionTokenDetails = source._identityAccessSessionTokenDetails
-    }
-  }
-
-  fileprivate mutating func _uniqueStorage() -> _StorageClass {
-    if !isKnownUniquelyReferenced(&_storage) {
-      _storage = _StorageClass(copying: _storage)
-    }
-    return _storage
-  }
-
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    _ = _uniqueStorage()
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      while let fieldNumber = try decoder.nextFieldNumber() {
-        // The use of inline closures is to circumvent an issue where the compiler
-        // allocates stack space for every case branch when no optimizations are
-        // enabled. https://github.com/apple/swift-protobuf/issues/1034
-        switch fieldNumber {
-        case 1: try { try decoder.decodeSingularMessageField(value: &_storage._accountDetails) }()
-        case 2: try { try decoder.decodeSingularMessageField(value: &_storage._onboardSessionTokenDetails) }()
-        case 4: try { try decoder.decodeSingularMessageField(value: &_storage._identityAccessSessionTokenDetails) }()
-        default: break
-        }
-      }
-    }
-  }
-
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      if let v = _storage._accountDetails {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-      }
-      if let v = _storage._onboardSessionTokenDetails {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
-      }
-      if let v = _storage._identityAccessSessionTokenDetails {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
-      }
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  static func ==(lhs: Elint_Services_Product_Identity_AccessAccountEthosIdentityTokenResponse, rhs: Elint_Services_Product_Identity_AccessAccountEthosIdentityTokenResponse) -> Bool {
-    if lhs._storage !== rhs._storage {
-      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
-        let _storage = _args.0
-        let rhs_storage = _args.1
-        if _storage._accountDetails != rhs_storage._accountDetails {return false}
-        if _storage._onboardSessionTokenDetails != rhs_storage._onboardSessionTokenDetails {return false}
-        if _storage._identityAccessSessionTokenDetails != rhs_storage._identityAccessSessionTokenDetails {return false}
-        return true
-      }
-      if !storagesAreEqual {return false}
-    }
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

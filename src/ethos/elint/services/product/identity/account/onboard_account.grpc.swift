@@ -49,11 +49,6 @@ internal protocol Elint_Services_Product_Identity_OnboardAccountServiceClientPro
     _ request: Elint_Services_Product_Identity_AuthenticateOnboardedAccountRequest,
     callOptions: CallOptions?
   ) -> UnaryCall<Elint_Services_Product_Identity_AuthenticateOnboardedAccountRequest, Elint_Services_Product_Identity_AuthenticateOnboardedAccountResponse>
-
-  func accessAccountEthosIdentityToken(
-    _ request: Elint_Services_Product_Identity_AccessAccountEthosIdentityTokenRequest,
-    callOptions: CallOptions?
-  ) -> UnaryCall<Elint_Services_Product_Identity_AccessAccountEthosIdentityTokenRequest, Elint_Services_Product_Identity_AccessAccountEthosIdentityTokenResponse>
 }
 
 extension Elint_Services_Product_Identity_OnboardAccountServiceClientProtocol {
@@ -132,24 +127,6 @@ extension Elint_Services_Product_Identity_OnboardAccountServiceClientProtocol {
       interceptors: self.interceptors?.makeAuthenticateOnboardedAccountInterceptors() ?? []
     )
   }
-
-  /// Unary call to AccessAccountEthosIdentityToken
-  ///
-  /// - Parameters:
-  ///   - request: Request to send to AccessAccountEthosIdentityToken.
-  ///   - callOptions: Call options.
-  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  internal func accessAccountEthosIdentityToken(
-    _ request: Elint_Services_Product_Identity_AccessAccountEthosIdentityTokenRequest,
-    callOptions: CallOptions? = nil
-  ) -> UnaryCall<Elint_Services_Product_Identity_AccessAccountEthosIdentityTokenRequest, Elint_Services_Product_Identity_AccessAccountEthosIdentityTokenResponse> {
-    return self.makeUnaryCall(
-      path: "/elint.services.product.identity.OnboardAccountService/AccessAccountEthosIdentityToken",
-      request: request,
-      callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeAccessAccountEthosIdentityTokenInterceptors() ?? []
-    )
-  }
 }
 
 internal protocol Elint_Services_Product_Identity_OnboardAccountServiceClientInterceptorFactoryProtocol {
@@ -165,9 +142,6 @@ internal protocol Elint_Services_Product_Identity_OnboardAccountServiceClientInt
 
   /// - Returns: Interceptors to use when invoking 'authenticateOnboardedAccount'.
   func makeAuthenticateOnboardedAccountInterceptors() -> [ClientInterceptor<Elint_Services_Product_Identity_AuthenticateOnboardedAccountRequest, Elint_Services_Product_Identity_AuthenticateOnboardedAccountResponse>]
-
-  /// - Returns: Interceptors to use when invoking 'accessAccountEthosIdentityToken'.
-  func makeAccessAccountEthosIdentityTokenInterceptors() -> [ClientInterceptor<Elint_Services_Product_Identity_AccessAccountEthosIdentityTokenRequest, Elint_Services_Product_Identity_AccessAccountEthosIdentityTokenResponse>]
 }
 
 internal final class Elint_Services_Product_Identity_OnboardAccountServiceClient: Elint_Services_Product_Identity_OnboardAccountServiceClientProtocol {
